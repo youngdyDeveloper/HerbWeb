@@ -29,6 +29,35 @@
     <link href="css/style.css" rel="stylesheet">
 </head>
 
+<!-- GTranslate Script -->
+<script type="text/javascript">
+function doGTranslate(lang_pair) {
+    if (lang_pair.value) lang_pair = lang_pair.value;
+    var lang = lang_pair.split('|')[1];
+    var select = document.querySelector("select.goog-te-combo");
+    if (select && select.options.length > 0) {
+        for (var i = 0; i < select.options.length; i++) {
+            if (select.options[i].value == lang) {
+                select.selectedIndex = i;
+                select.dispatchEvent(new Event("change"));
+                break;
+            }
+        }
+    }
+}
+</script>
+
+<!-- Google Translate Hidden -->
+<div id="google_translate_element" style="display: none;"></div>
+<script type="text/javascript">
+  function googleTranslateElementInit() {
+    new google.translate.TranslateElement(
+      { pageLanguage: 'sw', includedLanguages: 'en,sw' },
+      'google_translate_element'
+    );
+  }
+</script>
+<script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 <body>
     <!-- Topbar Start -->
     <div class="container-fluid px-5 d-none d-lg-block">
@@ -68,15 +97,23 @@
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarCollapse">
-            <div class="navbar-nav mx-auto py-0">
-                <a href="index.html" class="nav-item nav-link active">Home</a>
-                <a href="#about" class="nav-item nav-link">About</a>
-                <a href="#product" class="nav-item nav-link">Product</a>
-                
-                <a href="contact.html" class="nav-item nav-link">Contact</a>
-            </div>
+<div class="collapse navbar-collapse" id="navbarCollapse">
+    <div class="navbar-nav mx-auto py-0">
+        <a href="index.html" class="nav-item nav-link active">Home</a>
+        <a href="#about" class="nav-item nav-link">About</a>
+        <a href="#product" class="nav-item nav-link">Product</a>
+        <a href="contact.html" class="nav-item nav-link">Contact</a>
+    </div>
+
+    <!-- Language Switcher -->
+    <div class="nav-item dropdown">
+        <a href="#" class="nav-link dropdown-toggle text-white" data-bs-toggle="dropdown">Language</a>
+        <div class="dropdown-menu m-0">
+            <a href="#" class="dropdown-item" onclick="doGTranslate('sw|sw')">Kiswahili</a>
+            <a href="#" class="dropdown-item" onclick="doGTranslate('sw|en')">English</a>
         </div>
+    </div>
+</div>
     </nav>
     <!-- Navbar End -->
 
@@ -86,7 +123,7 @@
         <div id="header-carousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img class="w-100" src="img/top.png">
+                    <img class="w-100" src="img/top.jpg">
                     <div class="carousel-caption top-0 bottom-0 start-0 end-0 d-flex flex-column align-items-center justify-content-center">
                         <div class="text-start p-5" style="max-width: 900px;">
                             <h3 class="text-white">Uwazi Natural Hearbs</h3>
@@ -287,8 +324,8 @@ Faida zake
                    <div class="service-item bg-light text-center p-5">
                         <i class=" display-1 text-primary mb-3">  <img src="img/img3.jpg" width="250px"></i>
                         <h4>Kiboko Ya Kibamia</h4>
-                        <p class="mb-0" style="font-family: segoe ui; font-size: large";><b>Dawa Ni Ya Kupaka</b>
-                        Ni ya asilikabisa hakuna aina yeyote ya kemikali iliyotumika kutengeneza dawa ivyo hakuna madhara yeyote kwa mteja</p>
+                        <p class="mb-0" style="font-family: segoe ui; font-size: large";><b>Dawa Ni Ya Kupaka kwa ajili ya kuongeza pamoja na kunenepesha Uume</b>
+                        Ni ya asili kabisa hakuna aina yeyote ya kemikali iliyotumika kutengeneza dawa ivyo hakuna madhara yeyote kwa mteja</p>
                     </div>
 
                 </div>
@@ -332,7 +369,7 @@ Faida zake
                 </div>
                 <div class="col-lg-6">
                     <div class="d-block bg-white h-100 text-center p-5 pb-lg-0">
-                        <p style="font-family: ARIAL;">Dawa zetu ni za asili kwa assilimia 100% yaani hakuna chembechembe zozozte za kemikali zinazowezakuleta madhara kwa mtumiaji,, Tuna aina mbalimbali za dawa kulingana na mtumiaji,kuna za muda mfupkbla ya kushiriki tendo na z dawa zamuendelezo zenye matokeo chanya,Dawa zetu hata wagonjwa wakisukari wanawezakutumiakwan havina viahsiria vyovyote vyenye kuleta madhara.Bila kusahau gharama rafiki kabisakwa mtumiaji. </p>
+                        <p style="font-family: ARIAL;">Dawa zetu ni za asili kwa asilimia 100% yaani hakuna chembechembe zozote za kemikali zinazoweza kuleta madhara kwa mtumiaji, Tuna aina mbalimbali za dawa kulingana na mtumiaji,kuna za muda mfupi kabla ya kushiriki tendo na  dawa zamuendelezo zenye matokeo chanya, Dawa zetu hata wagonjwa wakisukari wanaweza kutumia kwan havina viahsiria vyovyote vyenye kuleta madhara.Bila kusahau gharama rafiki kabisa kwa mtumiaji. </p>
                         <img class="img-fluid" src="img/logo1.jpg" alt="">
                     </div>
                 </div>
@@ -445,14 +482,14 @@ Faida zake
                             <h3>Shuhuda kutoka kwa wateja wetu</h3>
                             <p class="fs-5">Gusalink chini kutembelea channelyetu ya telegram kwa shuhuda mbalimbali za w ateja wetu</p>
                             <hr class="mx-auto w-25">
-                            <h4 class="text-white mb-0"> <a href="https://t.me/uwaziherbals" class="text-blue mb-0">Telegram </a></h4>
+                            <h4 class="text-white mb-0"> <a href="https://t.me/uwaziherbals" class="text-secondary mb-0">Telegram </a></h4>
                         </div>
                         <div class="testimonial-item text-center text-white">
                             <i class="fa fa-telegram display-1 text-secondary mb-3"></i>
                             <h3>Shuhuda kutoka kwa wateja wetu</h3>
                             <p class="fs-5">Gusalink chini kutembelea channelyetu ya telegram kwa shuhuda mbalimbali za w ateja wetu</p>
                             <hr class="mx-auto w-25">
-                            <h4> <a href="https://t.me/uwaziherbals" class="text-blue mb-0">  Telegram </a></h4>
+                            <h4> <a href="https://t.me/uwaziherbals" class="text-secondary mb-0">  Telegram </a></h4>
                         </div>
                     </div>
                 </div>
@@ -588,7 +625,13 @@ Faida zake
         <h4 class="text-white mb-4">Get In Touch</h4>
         <div class="d-flex mb-2">
        <i class="bi bi-arrow-right me-2"></i>   <i class="bi bi-geo-alt text-white me-2"></i>
-          <p class="mb-0">Kinondoni Manyanya, Dar Es Salaam.</p>
+          <p class="mb-0">
+  <a href="https://maps.app.goo.gl/cazuLERS8xXdwSfg8" 
+     target="_blank" 
+     class="text-white text-decoration-none">
+    Kinondoni Manyanya, Dar Es Salaam.
+  </a>
+</p>
         </div>
         <div class="d-flex mb-2">
          <i class="bi bi-arrow-right me-2"></i> <i class="bi bi-envelope-open text-white me-2"></i>
